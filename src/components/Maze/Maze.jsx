@@ -4,7 +4,7 @@ import { Wall } from '@components'
 import { maze } from './Maze.module.css'
 import Player from '../Player'
 
-const Maze = ({ json, w, h }) => {
+const Maze = ({ json, w, h, color, skin }) => {
   const initialPlayerPos = json.reduce((acc, row, rowIndex) => {
     const colIndex = row.findIndex(col => col === 'p')
     if (colIndex !== -1) {
@@ -59,8 +59,8 @@ const Maze = ({ json, w, h }) => {
           switch (col) {
             case 'p':
               return (<>
-              <Player letter='p' backgroundColor="brown" pos={playerPos} />
-              <Wall letter=' ' backgroundColor="yellow" x1y1='#2C3E50' x2y1='#2C3E50' x3y1='#2C3E50' x1y2='#2C3E50' x2y2='#2C3E50' x3y2='#2C3E50' x1y3='#2C3E50' x2y3='#2C3E50' x3y3='#2C3E50' />
+              <Player letter='p' backgroundColor="brown" pos={playerPos} skin />
+              <Wall letter=' ' backgroundColor="yellow" x1y1={color} x2y1={color} x3y1={color} x1y2={color} x2y2={color} x3y2={color} x1y3={color} x2y3={color} x3y3={color} />
               </>)
             case 'g':
               return <Wall letter='g' backgroundColor="brown" />
@@ -139,7 +139,7 @@ const Maze = ({ json, w, h }) => {
             case '|':
               return <Wall letter='|' backgroundColor="green" x2y1='black' x2y2='black' x2y3='black'/>
             case ' ':
-              return <Wall letter=' ' backgroundColor="yellow" x1y1='#2C3E50' x2y1='#2C3E50' x3y1='#2C3E50' x1y2='#2C3E50' x2y2='#2C3E50' x3y2='#2C3E50' x1y3='#2C3E50' x2y3='#2C3E50' x3y3='#2C3E50' />
+              return <Wall letter=' ' backgroundColor="yellow" x1y1={color} x2y1={color} x3y1={color} x1y2={color} x2y2={color} x3y2={color} x1y3={color} x2y3={color} x3y3={color} />
           }
           return null
         }))}
@@ -150,7 +150,8 @@ const Maze = ({ json, w, h }) => {
 Maze.propTypes = {
   json: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   w: PropTypes.number,
-  h: PropTypes.number
+  h: PropTypes.number,
+  color: PropTypes.string
 }
 
 export default Maze

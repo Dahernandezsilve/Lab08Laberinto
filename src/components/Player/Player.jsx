@@ -7,7 +7,7 @@ import up from '/image/up.png'
 import right from '/image/right.png'
 import { centered } from './Player.module.css'
 
-const Player = ({ letter, backgroundColor, pos = { x: 50, y: 50 } }) => {
+const Player = ({ letter, backgroundColor, pos = { x: 50, y: 50 }, skin }) => {
   const cellSize = 50
   const playerSize = 50
   const x = (pos.x - 1) * cellSize + (cellSize - playerSize) / 2
@@ -67,6 +67,7 @@ const Player = ({ letter, backgroundColor, pos = { x: 50, y: 50 } }) => {
         fps={10}
         isAnimating={isAnimating}
         direction={direction}
+        skin
        />
     </div>
   )

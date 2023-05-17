@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import styles from './InputPills.module.css'
+import { useStoreon } from 'storeon/react'
 
 const InputPills = () => {
+  const { mazeConfig, dispatch } = useStoreon('mazeConfig')
   const [selectedTheme, setSelectedTheme] = useState(null)
 
   const themes = [
@@ -14,6 +16,11 @@ const InputPills = () => {
     setSelectedTheme(theme.id)
   }
 
+  const changeTheme = value => {
+    dispatch('mazeConfig/set', { key: 'theme', value })
+    console.log(mazeConfig)
+  }
+
   return (
     <div className={styles.themeSelector}>
       {themes.map((theme) => (
@@ -21,7 +28,10 @@ const InputPills = () => {
           key={theme.id}
           className={`${styles.themeButton} ${selectedTheme === theme.id ? styles.selectedThemeButton : ''}`}
           style={{ backgroundColor: selectedTheme === theme.id ? theme.color : '#f5c542' }}
-          onClick={() => handleThemeChange(theme)}
+          onClick={() => {
+            handleThemeChange(theme)
+            changeTheme(theme.color)
+          }}
         >
           {theme.name}
         </button>

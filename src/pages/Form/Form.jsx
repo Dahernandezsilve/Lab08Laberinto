@@ -9,29 +9,17 @@ import Checkbox from '../../components/Checkbox/Checkbox'
 import { useStoreon } from 'storeon/react'
 
 const Form = () => {
-  const { config, dispatch } = useStoreon('config')
+  const { mazeConfig, dispatch } = useStoreon('mazeConfig')
   const history = useHistory()
 
   const changeWidth = value => {
     dispatch('mazeConfig/set', { key: 'width', value })
+    console.log(mazeConfig)
   }
 
   const changeHeight = value => {
     dispatch('mazeConfig/set', { key: 'height', value })
-  }
-
-  const handleChange = (event) => {
-    const { name, value } = event.target
-    setConfig((prevConfig) => ({
-      ...prevConfig,
-      [name]: value
-    }))
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    // Aquí puedes hacer algo con los valores del formulario, como enviarlos al servidor
-    console.log(config)
+    console.log(mazeConfig)
   }
 
   return (
@@ -44,18 +32,16 @@ const Form = () => {
           <Input
             label='Ancho'
             name='ancho'
-            value={config.width}
-            onChange={value => changeWidth(value)}
-            type='number'
+            value={mazeConfig.width}
+            onChange={value => changeWidth(parseInt(value))}
             required={false}
             placeholder='4...'
           />
           <Input
             label='Alto'
             name='alto'
-            value={config.height}
-            onChange={value => changeHeight(value)}
-            type='number'
+            value={mazeConfig.height}
+            onChange={value => changeHeight(parseInt(value))}
             required={false}
             placeholder='4...'
           />
@@ -68,7 +54,7 @@ const Form = () => {
           <span className={dividerTitle}>Tiempo en segundos</span>
         </div>
         <Checkbox />
-        <Button onClick={() => { history.push('/Game') }} type='button'>Enviar</Button>
+        <Button onClick={() => { history.push('/Game') }} type='primary'>Enviar</Button>
       </div>
     </div>
   )

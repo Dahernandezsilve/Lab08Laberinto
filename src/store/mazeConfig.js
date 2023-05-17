@@ -1,18 +1,18 @@
 const mazeConfig = store => {
   store.on('@init', () => ({
-    config: {
-      skin: '',
-      theme: '',
+    mazeConfig: {
       width: 4,
       height: 4,
-      time: false,
-      timer: 15
+      skin: 1,
+      theme: '#E5BB00',
+      time: 1,
+      timer: false
     }
   }))
   store.on('mazeConfig/Maze', (_, newState) => newState)
   store.on('mazeConfig/set', (oldState, { key, value }) => ({
-    config: {
-      ...oldState.config,
+    mazeConfig: {
+      ...oldState.mazeConfig,
       [key]: value
     }
   }))

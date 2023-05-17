@@ -1,0 +1,14 @@
+.imageFilter {
+    background-image: linear-gradient(blue, blue), url(ruta_a_la_imagen.png);
+    background-blend-mode: multiply;
+  }
+  
+  .imageFilter::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url(ruta_a_la_imagen.png);
+    filter: hue-rotate(240deg) saturate(200%);
+  }
+  

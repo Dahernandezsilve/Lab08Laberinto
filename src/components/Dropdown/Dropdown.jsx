@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import styles from './Dropdown.module.css'
+import { useStoreon } from 'storeon/react'
 
 const Dropdown = () => {
+  const { mazeConfig, dispatch } = useStoreon('mazeConfig')
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(null)
 
@@ -18,6 +20,11 @@ const Dropdown = () => {
   const selectOption = (option) => {
     setSelectedOption(option)
     setIsOpen(false)
+  }
+
+  const changeSkin = value => {
+    dispatch('mazeConfig/set', { key: 'skin', value })
+    console.log(mazeConfig)
   }
 
   return (
@@ -38,7 +45,10 @@ const Dropdown = () => {
       {isOpen && (
         <ul className={styles.options}>
           {options.map((option) => (
-            <li key={option.id} onClick={() => selectOption(option)}>
+            <li key={option.id} onClick={() => {
+              selectOption(option)
+              changeSkin(option.id)
+            }}>
               <img src={option.imageSrc} alt="Option" />
               <span>{option.text}</span>
             </li>

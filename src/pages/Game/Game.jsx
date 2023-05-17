@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { styles } from './Game.module.css'
+import { styles, mazeContainer, mazeObject } from './Game.module.css'
 import Maze from '../../components/Maze/Maze'
 import useApi from '../../hooks/useApi/useApi'
+import { useStoreon } from 'storeon/react'
 
 const Game = () => {
+  const { mazeConfig, dispatch } = useStoreon('mazeConfig')
   console.log('Maze')
   const [response, loading, handleRequest] = useApi()
   const [maze, setMaze] = useState(null)
 
   const handleMaze = async () => {
-    await handleRequest('GET', 10, 10)
+    await handleRequest('GET', mazeConfig.width, mazeConfig.height)
   }
 
   useEffect(() => {
@@ -33,7 +35,9 @@ const Game = () => {
       {
       maze !== undefined && maze !== null
         ? (
-        <Maze key={maze.id} json={maze} w={10} h={10} />
+        <div className={mazeContainer}>
+          <Maze className={mazeObject} key={maze.id} json={maze} w={mazeConfig.width} h={mazeConfig.height} color={mazeConfig.theme}/>
+        </div>
           )
         : (<p>hola</p>)
     }

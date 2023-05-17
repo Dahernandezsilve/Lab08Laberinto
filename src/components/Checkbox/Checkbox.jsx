@@ -1,20 +1,23 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import styles from './Checkbox.module.css'
+import { useStoreon } from 'storeon/react'
 
 const Checkbox = () => {
+  const { mazeConfig, dispatch } = useStoreon('mazeConfig')
   const [isChecked, setIsChecked] = useState(false)
-  const [inputValue, setInputValue] = useState('')
-  const inputRef = useRef(null)
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
-    if (!isChecked && inputRef.current) {
-      inputRef.current.focus()
-    }
   }
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value)
+  const changeTime = value => {
+    dispatch('mazeConfig/set', { key: 'time', value })
+    console.log(mazeConfig)
+  }
+
+  const changeTimer = value => {
+    dispatch('mazeConfig/set', { key: 'timer', value })
+    console.log(mazeConfig)
   }
 
   return (
@@ -24,21 +27,22 @@ const Checkbox = () => {
           type="checkbox"
           className={styles.checkboxInput}
           checked={isChecked}
-          onChange={handleCheckboxChange}
+          onChange={() => {
+            handleCheckboxChange()
+            changeTimer(isChecked)
+          }}
         />
         Temporizador
       </label>
       {isChecked && (
         <div className={styles.inputContainer}>
           <input
-            ref={inputRef}
             type="number"
             className={styles.inputField}
-            value={inputValue}
-            onChange={handleInputChange}
+            value={mazeConfig.time}
+            onChange={e => changeTime(parseInt(e.target.value))}
             placeholder="1..."
             min={0}
-            step={1}
           />
         </div>
       )}

@@ -17,7 +17,10 @@ const Welcome = () => {
       videoRef.current.src = '/video/fin.mp4'
       videoRef.current.load()
       videoRef.current.play()
-      setInterval(() => history.push('/Form'), 1700)
+      const intervalId = setInterval(() => {
+        history.push('/Form')
+        clearInterval(intervalId)
+      }, 1700)
     }
   }
 

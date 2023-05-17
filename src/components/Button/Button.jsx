@@ -21,7 +21,7 @@ const Button = ({
     }}
     disabled={disabled}
   >
-    <span></span>
+    <span>{children}</span>
   </button>
 )
 

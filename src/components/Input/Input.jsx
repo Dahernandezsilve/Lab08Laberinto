@@ -21,7 +21,7 @@ const Input = ({
         <input
           id={name}
           name={name}
-          type={type}
+          type='number'
           value={value}
           onChange={e => onChange(e.target.value)}
           placeholder={placeholder}
@@ -36,7 +36,7 @@ const Input = ({
 Input.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string,
   required: PropTypes.bool,
