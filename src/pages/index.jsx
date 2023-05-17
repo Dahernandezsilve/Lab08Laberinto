@@ -1,8 +1,7 @@
 import React from 'react'
-import Maze from './Maze'
+import Game from './Game'
 import Welcome from './Welcome'
-import Win from './Win'
-
+import Form from './Form'
 import { Switch, Route } from 'react-router-dom'
 
 const navigate = (page) => {
@@ -14,15 +13,9 @@ const Page = () => {
 
   return (
     <Switch>
-      <Route path="/win">
-        <Win />
-      </Route>
-      <Route path="/maze">
-        <Maze />
-      </Route>
-      <Route path="/">
-        <Welcome />
-      </Route>
+      <Route exact path="/" component={Welcome} />
+      <Route exact path="/Form" component={Form} />
+      <Route exact path="/Game" component={Game} />
     </Switch>
   )
 }

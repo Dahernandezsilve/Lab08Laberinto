@@ -1,13 +1,15 @@
-.styles {
+.welcomeB {
+  background-color: black;
   display: flex;
-  flex-gap: 20px;
-  flex-direction: column; 
-  width: 100vw;
-  height: 100vh;
-  background: '#CCC';
-  color: '#F5F5F5';
+  overflow-x: hidden;
+  overflow-y: hidden;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
 }
 
-.styles a {
-  font-size: 50px;
+.miVideo {
+  overflow: hidden;
+  width: auto;
+  height: 100vh;
 }

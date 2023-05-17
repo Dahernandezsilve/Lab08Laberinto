@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  font-family: Verdana, sans-serif;
+  color: #f5c542;
+  font-size: 12px;
+  font-weight: 100;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.checkboxInput {
+  margin-right: 5px;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid #f5c542;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkboxInput:checked {
+  background-color: #f5c542;
+}
+
+.inputField {
+  margin-left: 10px;
+  width: 50px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #b48600;
+  background-color: #f5c542;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  transform-origin: top left;
+  transform: scale(1);
+}
+
+.checkboxInput:checked ~ .inputField {
+  transform: scale(1.2);
+}

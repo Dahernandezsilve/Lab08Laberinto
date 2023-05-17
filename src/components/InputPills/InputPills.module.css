@@ -1,0 +1,28 @@
+.themeSelector {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .themeButton {
+    align-items: center;
+    padding: 20px;
+    background-color:  #f5c542;
+    border-radius: 4px;
+    cursor: pointer;
+    border-width: 1px;
+    border-color: #b48600;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);    
+    transition: background-color 0.3s;
+  }
+  
+  .themeButton:hover {
+    background-color: #f5c542;
+  }
+  
+  .selectedThemeButton {
+    transition: background-color 0.3s;
+  }
+  
