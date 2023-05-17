@@ -27,3 +27,35 @@ body {
   right: 0;
   margin: auto;
 }
+
+.timerContainer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #f5c542;
+  border: 1px solid #b48600;
+  border-radius: 4px;
+  padding: 10px;
+  font-family: Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  color: black;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.messageContainer {
+  font-family: Impact, Charcoal, sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f5c542;
+  border: 1px solid #b48600;
+  padding: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  font-size: 50px;
+  text-align: center;
+  border-radius: 5px;
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

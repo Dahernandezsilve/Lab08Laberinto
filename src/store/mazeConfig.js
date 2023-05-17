@@ -5,7 +5,7 @@ const mazeConfig = store => {
       height: 4,
       skin: 1,
       theme: '#E5BB00',
-      time: 1,
+      time: 30,
       timer: false
     }
   }))

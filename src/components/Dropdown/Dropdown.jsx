@@ -9,8 +9,8 @@ const Dropdown = () => {
 
   const options = [
     { id: 1, imageSrc: '/image/cuphead.png', text: 'Cuphead rojo' },
-    { id: 2, imageSrc: '/image/cuphead.png', text: 'Cuphead azul' },
-    { id: 3, imageSrc: '/image/cuphead.png', text: 'Cuphead verde' }
+    { id: 2, imageSrc: '/image/cupheadBlue.png', text: 'Cuphead azul' },
+    { id: 3, imageSrc: '/image/cupheadGreen.png', text: 'Cuphead verde' }
   ]
 
   const toggleDropdown = () => {

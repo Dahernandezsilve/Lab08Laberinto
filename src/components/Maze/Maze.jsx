@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Wall } from '@components'
 import { maze } from './Maze.module.css'
 import Player from '../Player'
 
-const Maze = ({ json, w, h, color, skin }) => {
+const Maze = ({ json, w, h, color, skinMaze, onPlayerWin }) => {
   const initialPlayerPos = json.reduce((acc, row, rowIndex) => {
     const colIndex = row.findIndex(col => col === 'p')
     if (colIndex !== -1) {
@@ -42,6 +42,12 @@ const Maze = ({ json, w, h, color, skin }) => {
     }
   }
 
+  useEffect(() => {
+    if (json[playerPos.y][playerPos.x] === 'g') {
+      onPlayerWin()
+    }
+  }, [playerPos, json, onPlayerWin])
+
   return (
     <div
       className={maze}
@@ -59,7 +65,7 @@ const Maze = ({ json, w, h, color, skin }) => {
           switch (col) {
             case 'p':
               return (<>
-              <Player letter='p' backgroundColor="brown" pos={playerPos} skin />
+              <Player letter='p' backgroundColor="brown" pos={playerPos} skinMaze={skinMaze} />
               <Wall letter=' ' backgroundColor="yellow" x1y1={color} x2y1={color} x3y1={color} x1y2={color} x2y2={color} x3y2={color} x1y3={color} x2y3={color} x3y3={color} />
               </>)
             case 'g':
@@ -151,7 +157,9 @@ Maze.propTypes = {
   json: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   w: PropTypes.number,
   h: PropTypes.number,
-  color: PropTypes.string
+  color: PropTypes.string,
+  skinMaze: PropTypes.string,
+  onPlayerWin: PropTypes.func
 }
 
 export default Maze

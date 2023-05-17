@@ -8,6 +8,7 @@ const Checkbox = () => {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
+    changeTimer(!isChecked)
   }
 
   const changeTime = value => {
@@ -29,7 +30,6 @@ const Checkbox = () => {
           checked={isChecked}
           onChange={() => {
             handleCheckboxChange()
-            changeTimer(isChecked)
           }}
         />
         Temporizador
