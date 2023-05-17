@@ -1,3 +1,4 @@
+/* eslint-disable import/no-absolute-path */
 import Animation from './Animation'
 import down from '/image/down.png'
 import left from '/image/left.png'
@@ -11,15 +12,15 @@ export default {
     image: {
       control: {
         type: 'inline-radio',
-        options: [down, left, up, right],
-      },
+        options: [down, left, up, right]
+      }
     },
     widthFrame: { control: 'number' },
     heightFrame: { control: 'number' },
     steps: { control: 'number' },
     fps: { control: 'number' },
-    isAnimating: { control: 'boolean' },
-  },
+    isAnimating: { control: 'boolean' }
+  }
 }
 
 export const Default = {
@@ -29,8 +30,8 @@ export const Default = {
     heightFrame: 64,
     steps: 5,
     fps: 10,
-    isAnimating: true,
-  },
+    isAnimating: true
+  }
 }
 
 export const Down = {
@@ -40,8 +41,8 @@ export const Down = {
     heightFrame: 32,
     steps: 5,
     fps: 10,
-    isAnimating: true,
-  },
+    isAnimating: true
+  }
 }
 
 export const Up = {
@@ -51,8 +52,8 @@ export const Up = {
     heightFrame: 32,
     steps: 5,
     fps: 10,
-    isAnimating: true,
-  },
+    isAnimating: true
+  }
 }
 
 export const Left = {
@@ -62,8 +63,8 @@ export const Left = {
     heightFrame: 32,
     steps: 5,
     fps: 10,
-    isAnimating: true,
-  },
+    isAnimating: true
+  }
 }
 
 export const Right = {
@@ -73,6 +74,6 @@ export const Right = {
     heightFrame: 32,
     steps: 5,
     fps: 10,
-    isAnimating: true,
-  },
+    isAnimating: true
+  }
 }

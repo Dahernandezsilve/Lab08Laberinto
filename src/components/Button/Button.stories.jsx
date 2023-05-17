@@ -9,26 +9,26 @@ export default {
   }
 }
 
-export const asPrimary = {
+export const AsPrimary = {
   args: {
     type: 'primary'
   }
 }
 
-export const asSecondary = {
+export const AsSecondary = {
   args: {
     type: 'secondary'
   }
 }
 
-export const asLoading = {
+export const AsLoading = {
   args: {
     type: 'primary',
     loading: true
   }
 }
 
-export const asDisabled = {
+export const AsDisabled = {
   args: {
     type: 'primary',
     disabled: true

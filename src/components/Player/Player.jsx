@@ -144,7 +144,8 @@ Player.propTypes = {
   letter: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string.isRequired,
   style: PropTypes.object,
-  pos: PropTypes.object.isRequired
+  pos: PropTypes.object.isRequired,
+  skinMaze: PropTypes.number
 }
 
 export default Player

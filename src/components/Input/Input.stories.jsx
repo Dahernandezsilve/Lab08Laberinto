@@ -15,7 +15,7 @@ export default {
   }
 }
 
-export const asText = {
+export const AsText = {
   args: {
     label: 'Nombre de Usuario',
     name: 'username',
@@ -25,18 +25,7 @@ export const asText = {
   }
 }
 
-export const asPassword = {
-  args: {
-    label: 'Password',
-    name: 'password',
-    value: '',
-    type: 'password',
-    required: true,
-    placeholder: ''
-  }
-}
-
-export const asNumber = {
+export const AsNumber = {
   args: {
     label: 'Numero de carnet',
     name: 'carnet',

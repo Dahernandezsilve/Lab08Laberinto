@@ -8,7 +8,7 @@ export default {
   }
 }
 
-export const asDefault = {
+export const AsDefault = {
   args: {
   }
 }
