@@ -1,24 +1,13 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styles from './Checkbox.module.css'
-import { useStoreon } from 'storeon/react'
 
-const Checkbox = () => {
-  const { mazeConfig, dispatch } = useStoreon('mazeConfig')
+const Checkbox = ({ mazeConfig, dispatch, changeTime, changeTimer }) => {
   const [isChecked, setIsChecked] = useState(false)
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
     changeTimer(!isChecked)
-  }
-
-  const changeTime = value => {
-    dispatch('mazeConfig/set', { key: 'time', value })
-    console.log(mazeConfig)
-  }
-
-  const changeTimer = value => {
-    dispatch('mazeConfig/set', { key: 'timer', value })
-    console.log(mazeConfig)
   }
 
   return (
@@ -40,7 +29,7 @@ const Checkbox = () => {
             type="number"
             className={styles.inputField}
             value={mazeConfig.time}
-            onChange={e => changeTime(parseInt(e.target.value))}
+            onChange={(e) => changeTime(parseInt(e.target.value))}
             placeholder="1..."
             min={0}
           />
@@ -48,6 +37,13 @@ const Checkbox = () => {
       )}
     </div>
   )
+}
+
+Checkbox.propTypes = {
+  mazeConfig: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  changeTime: PropTypes.func.isRequired,
+  changeTimer: PropTypes.func.isRequired
 }
 
 export default Checkbox

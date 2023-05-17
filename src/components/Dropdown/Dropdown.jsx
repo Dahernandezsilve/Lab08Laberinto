@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styles from './Dropdown.module.css'
-import { useStoreon } from 'storeon/react'
 
-const Dropdown = () => {
-  const { mazeConfig, dispatch } = useStoreon('mazeConfig')
+const Dropdown = ({ mazeConfig, dispatch, changeSkin }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(null)
 
@@ -22,33 +21,32 @@ const Dropdown = () => {
     setIsOpen(false)
   }
 
-  const changeSkin = value => {
-    dispatch('mazeConfig/set', { key: 'skin', value })
-    console.log(mazeConfig)
-  }
-
   return (
     <div className={styles.dropdown}>
       <button className={styles.toggleButton} onClick={toggleDropdown}>
-        {selectedOption
-          ? (
-            <div className={styles.selectedOption}>
+        {
+          selectedOption
+            ? (
+              <div className={styles.selectedOption}>
                 <img src={selectedOption.imageSrc} alt="Option" />
                 <span>{selectedOption.text}</span>
-            </div>
-            )
-          : (
-          <span className={styles.text}>Elige una skin</span>
-            )}
+              </div>
+              )
+            : (
+              <span className={styles.text}>Elige una skin</span>
+              )}
         <span className={styles.arrow}>{isOpen ? '▲' : '▼'}</span>
       </button>
       {isOpen && (
         <ul className={styles.options}>
           {options.map((option) => (
-            <li key={option.id} onClick={() => {
-              selectOption(option)
-              changeSkin(option.id)
-            }}>
+            <li
+              key={option.id}
+              onClick={() => {
+                selectOption(option)
+                changeSkin(option.id)
+              }}
+            >
               <img src={option.imageSrc} alt="Option" />
               <span>{option.text}</span>
             </li>
@@ -57,6 +55,12 @@ const Dropdown = () => {
       )}
     </div>
   )
+}
+
+Dropdown.propTypes = {
+  mazeConfig: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  changeSkin: PropTypes.func.isRequired
 }
 
 export default Dropdown

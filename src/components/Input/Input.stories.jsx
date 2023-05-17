@@ -21,7 +21,7 @@ export const AsText = {
     name: 'username',
     type: 'number',
     required: true,
-    placeholder: 'Denn1s'
+    placeholder: 'user'
   }
 }
 

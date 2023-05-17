@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styles from './InputPills.module.css'
-import { useStoreon } from 'storeon/react'
 
-const InputPills = () => {
-  const { mazeConfig, dispatch } = useStoreon('mazeConfig')
+const InputPills = ({ mazeConfig, dispatch, changeTheme }) => {
   const [selectedTheme, setSelectedTheme] = useState(null)
 
   const themes = [
@@ -16,18 +15,17 @@ const InputPills = () => {
     setSelectedTheme(theme.id)
   }
 
-  const changeTheme = value => {
-    dispatch('mazeConfig/set', { key: 'theme', value })
-    console.log(mazeConfig)
-  }
-
   return (
     <div className={styles.themeSelector}>
       {themes.map((theme) => (
         <button
           key={theme.id}
-          className={`${styles.themeButton} ${selectedTheme === theme.id ? styles.selectedThemeButton : ''}`}
-          style={{ backgroundColor: selectedTheme === theme.id ? theme.color : '#f5c542' }}
+          className={`${styles.themeButton} ${
+            selectedTheme === theme.id ? styles.selectedThemeButton : ''
+          }`}
+          style={{
+            backgroundColor: selectedTheme === theme.id ? theme.color : '#f5c542'
+          }}
           onClick={() => {
             handleThemeChange(theme)
             changeTheme(theme.color)
@@ -38,6 +36,12 @@ const InputPills = () => {
       ))}
     </div>
   )
+}
+
+InputPills.propTypes = {
+  mazeConfig: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  changeTheme: PropTypes.func.isRequired
 }
 
 export default InputPills

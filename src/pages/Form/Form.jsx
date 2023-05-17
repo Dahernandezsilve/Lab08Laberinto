@@ -22,6 +22,26 @@ const Form = () => {
     console.log(mazeConfig)
   }
 
+  const changeTime = value => {
+    dispatch('mazeConfig/set', { key: 'time', value })
+    console.log(mazeConfig)
+  }
+
+  const changeTimer = value => {
+    dispatch('mazeConfig/set', { key: 'timer', value })
+    console.log(mazeConfig)
+  }
+
+  const changeSkin = value => {
+    dispatch('mazeConfig/set', { key: 'skin', value })
+    console.log(mazeConfig)
+  }
+
+  const changeTheme = value => {
+    dispatch('mazeConfig/set', { key: 'theme', value })
+    console.log(mazeConfig)
+  }
+
   return (
     <div className={styles}>
       <span className={title}>CUPHEAD&apos;S MAZE</span>
@@ -47,13 +67,13 @@ const Form = () => {
           />
         </div>
         <span className={dividerTitle}>Skins</span>
-        <Dropdown />
+        <Dropdown mazeConfig dispatch changeSkin={changeSkin} />
         <span className={dividerTitle}>Tema</span>
-        <InputPills />
+        <InputPills mazeConfig dispatch changeTheme={changeTheme} />
         <div className={inputContainer}>
           <span className={dividerTitle}>Tiempo en segundos</span>
         </div>
-        <Checkbox />
+        <Checkbox mazeConfig dispatch changeTime={changeTime} changeTimer={changeTimer} />
         <Button onClick={() => { history.push('/Game') }} type='primary'>Enviar</Button>
       </div>
     </div>
